@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.preag.simplegrid</groupId>
 	<artifactId>SimpleGrid</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.3.0-SNAPSHOT</version>
 	<distributionManagement>
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
@@ -29,6 +29,18 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+				<plugin>
+				<groupId>com.zenjava</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>8.7.0</version>
+				<configuration>
+					<mainClass>application.Main</mainClass>
+					<vendor>InnoSetup</vendor>
+					<needShortcut>true</needShortcut>
+					<needMenu>true</needMenu>
+					<appName>PEPExcel</appName>
 				</configuration>
 			</plugin>
 		</plugins>
