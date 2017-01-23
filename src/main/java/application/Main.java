@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			SimpleGrid root = new SimpleGrid(400,400);
-			root.setGridlineColor(Color.BLUE);
+//			root.setGridlineColor(Color.BLUE);
 			root.init(5, 7);
 			root.getCell(0, 1).setText("I feel good");
 			root.getCell(1, 2).setText("I feel good");
@@ -31,9 +31,11 @@ public class Main extends Application {
 			vb.setFillWidth(true);
 			vb.setMaxHeight(Double.MAX_VALUE);
 			vb.setPrefHeight(400);
+			root.setGridlineVisible(false);
 			Scene scene = new Scene(vb,400,400);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Simple grid");
+			
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

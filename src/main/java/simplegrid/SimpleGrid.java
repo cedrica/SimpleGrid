@@ -90,7 +90,6 @@ public class SimpleGrid extends HBox {
 		} else {
 			if (cells.length > 0) {
 				SimpleGridStyle.GRIDLINE_COLOR = "-fx-border-color:" + hex + "";
-				System.out.println(SimpleGridStyle.GRIDLINE_COLOR);
 				String[] styles = cells[0][0].getStyle().split(";");
 				String gridLines = styles[3];
 				for (CustomCell[] cell : cells) {
@@ -103,6 +102,22 @@ public class SimpleGrid extends HBox {
 		}
 	}
 
+	public void setGridlineVisible(boolean b) {
+			if (cells.length > 0) {
+				if(!b){
+					String[] styles = cells[0][0].getStyle().split(";");
+					String gridLines = styles[0];
+					for (CustomCell[] cell : cells) {
+						for (CustomCell customCell : cell) {
+							String newStyle = customCell.getStyle().replaceAll(gridLines, SimpleGridStyle.NO_BORDER);
+							customCell.setStyle(newStyle);
+						}
+					}
+				}
+		
+		}
+	}
+	
 	/**
 	 * get the cell at the specified row and column index
 	 * 
@@ -120,6 +135,10 @@ public class SimpleGrid extends HBox {
 		return cells[rowIndex][colIndex];
 	}
 
+	/**
+	 * assign a height to all the cells of the grid
+	 * @param rowHeight
+	 */
 	public void setRowHeight(double rowHeight) {
 		this.rowHeight = rowHeight;
 		this.setMaxHeight(rowHeight * rowCount);
@@ -130,6 +149,11 @@ public class SimpleGrid extends HBox {
 		}
 	}
 
+	/**
+	 * assign the given width to the given column
+	 * @param colIndex
+	 * @param colWidth
+	 */
 	public void resetColumnWidth(int colIndex, double colWidth) {
 		for (int i = 0; i < rowCount; i++) {
 			cells[i][colIndex].setMinWidth(colWidth);
@@ -143,6 +167,7 @@ public class SimpleGrid extends HBox {
 	// }
 	// }
 	/**
+	 * merge cell corresponding to the given configuration
 	 * @param firstRow
 	 *        : 0-based
 	 * @param lastRow
@@ -325,7 +350,7 @@ public class SimpleGrid extends HBox {
 		if (rowIndex > rowCount || colIndex > colCount) {
 			throw new Exception("Cannot set Height: given row or column index is out of bounds");
 		}
-		cells[rowIndex][colIndex].setMaxHeight(height);
+		cells[rowIndex][colIndex].setMinHeight(height);
 	}
 
 	protected static class SimpleGridStyle {
