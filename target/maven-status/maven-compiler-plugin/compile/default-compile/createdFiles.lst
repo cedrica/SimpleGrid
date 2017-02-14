@@ -1,4 +1,7 @@
 application\Main.class
+META-INF\MANIFEST.MF
+META-INF\maven\com.preag.simplegrid\SimpleGrid\pom.xml
+META-INF\maven\com.preag.simplegrid\SimpleGrid\pom.properties
 simplegrid\SimpleGrid$CustomCell.class
 simplegrid\SimpleGrid.class
 simplegrid\SimpleGrid$SimpleGridStyle.class

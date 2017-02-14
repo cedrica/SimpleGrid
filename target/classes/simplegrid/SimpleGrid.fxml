@@ -6,6 +6,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root xmlns:fx="http://javafx.com/fxml" type="HBox" style="-fx-border-width: 1.0 0.0 0.0 1.0;-fx-pref-height:20;-fx-pref-width:100;-fx-border-color: #0000FF transparent transparent #0000FF;;">
+<fx:root xmlns:fx="http://javafx.com/fxml" type="HBox">
 
 </fx:root>

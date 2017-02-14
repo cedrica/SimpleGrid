@@ -31,7 +31,7 @@ public class Main extends Application {
 			vb.setFillWidth(true);
 			vb.setMaxHeight(Double.MAX_VALUE);
 			vb.setPrefHeight(400);
-			root.setGridlineVisible(false);
+//			root.setGridlineVisible(false);
 			Scene scene = new Scene(vb,400,400);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Simple grid");

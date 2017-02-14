@@ -90,11 +90,12 @@ public class SimpleGrid extends HBox {
 		} else {
 			if (cells.length > 0) {
 				SimpleGridStyle.GRIDLINE_COLOR = "-fx-border-color:" + hex + "";
-				String[] styles = cells[0][0].getStyle().split(";");
-				String gridLines = styles[3];
+	
 				for (CustomCell[] cell : cells) {
 					for (CustomCell customCell : cell) {
-						String newStyle = customCell.getStyle().replaceAll(gridLines, SimpleGridStyle.GRIDLINE_COLOR);
+						String[] styles = customCell.getStyle().split(";");
+						String gridLines = styles[3];
+						String newStyle = customCell.getStyle().replaceAll(gridLines+";", SimpleGridStyle.GRIDLINE_COLOR);
 						customCell.setStyle(newStyle);
 					}
 				}
@@ -105,11 +106,11 @@ public class SimpleGrid extends HBox {
 	public void setGridlineVisible(boolean b) {
 			if (cells.length > 0) {
 				if(!b){
-					String[] styles = cells[0][0].getStyle().split(";");
-					String gridLines = styles[0];
 					for (CustomCell[] cell : cells) {
 						for (CustomCell customCell : cell) {
-							String newStyle = customCell.getStyle().replaceAll(gridLines, SimpleGridStyle.NO_BORDER);
+							String[] styles = customCell.getStyle().split(";");
+							String gridLines = styles[0];
+							String newStyle = customCell.getStyle().replaceAll(gridLines+";", "-fx-border-width:0;");
 							customCell.setStyle(newStyle);
 						}
 					}
@@ -189,19 +190,19 @@ public class SimpleGrid extends HBox {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
 
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color: " + hex + " transparent transparent " + hex + ";");
 						cell.setStyle(newStyle);
 					} else if (i == lastRow) {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color:transparent transparent transparent " + hex + ";");
 						cell.setStyle(newStyle);
 					} else {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color:transparent transparent transparent " + hex + ";");
 						cell.setStyle(newStyle);
 					}
@@ -209,19 +210,19 @@ public class SimpleGrid extends HBox {
 					if (i == firstRow) {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color: " + hex + " " + hex + " transparent " + hex + ";");
 						cell.setStyle(newStyle);
 					} else if (i == lastRow) {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color:transparent " + hex + " " + hex + " transparent;");
 						cell.setStyle(newStyle);
 					} else {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color:transparent " + hex + " transparent transparent;");
 						cell.setStyle(newStyle);
 					}
@@ -229,19 +230,19 @@ public class SimpleGrid extends HBox {
 					if (i == firstRow) {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color: " + hex + " transparent transparent transparent;");
 						cell.setStyle(newStyle);
 					} else if (i == lastRow) {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color:transparent transparent " + hex + " transparent;");
 						cell.setStyle(newStyle);
 					} else {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
-						String newStyle = cell.getStyle().replaceAll(borderColor,
+						String newStyle = cell.getStyle().replaceAll(borderColor+";",
 										"-fx-border-color:transparent transparent transparent transparent;");
 						cell.setStyle(newStyle);
 					}
@@ -355,7 +356,7 @@ public class SimpleGrid extends HBox {
 
 	protected static class SimpleGridStyle {
 
-		public static String	GRIDLINE_COLOR	= "-fx-border-color:gray;";
+		public static String	GRIDLINE_COLOR	= "-fx-border-color:transparent;";
 		public static String	DIMENSIONBG		= "-fx-pref-height:20;-fx-pref-width:100;";
 
 		public static String	NO_TOP_BORDER		= "-fx-border-width: 0.0 1.0 1.0 1.0;";
@@ -367,7 +368,7 @@ public class SimpleGrid extends HBox {
 		public static String	NO_LEFT_BOTTOM_BORDER	= "-fx-border-width: 1.0 1.0 0.0 0.0;";
 		public static String	NO_TOP_LEFT_BORDER		= "-fx-border-width: 0.0 1.0 1.0 0.0;";
 
-		public static String	NO_BORDER	= "-fx-border-width: 0;";
+		public static String	NO_BORDER	= "-fx-border-width: 0.0 0.0 0.0 0.0;";
 		public static String	ALL_BORDER	= "-fx-border-width: 1;";
 	}
 
