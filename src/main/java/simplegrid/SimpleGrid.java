@@ -6,8 +6,6 @@ package simplegrid;
 import java.io.IOException;
 import java.net.URL;
 
-import javax.management.StringValueExp;
-
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -74,9 +72,9 @@ public class SimpleGrid extends HBox {
 				customCell.setAlignment(Pos.CENTER);
 				cells[rowIndex][columnIndex] = customCell;
 				vb.getChildren().add(cells[rowIndex][columnIndex]);
-				vb.setVgrow(customCell, Priority.ALWAYS);
+				VBox.setVgrow(customCell, Priority.ALWAYS);
 			}
-			this.setHgrow(vb, Priority.ALWAYS);
+			HBox.setHgrow(vb, Priority.ALWAYS);
 			this.getChildren().add(vb);
 		}
 	}
@@ -161,12 +159,6 @@ public class SimpleGrid extends HBox {
 		}
 	}
 
-	// None sence
-	// public void resetColumnHeight(int colIndex, double rowHeight) {
-	// for (int i = 0; i<rowCount; i++) {
-	// cells[i][colIndex].setMaxHeight(rowHeight);
-	// }
-	// }
 	/**
 	 * merge cell corresponding to the given configuration
 	 * @param firstRow
@@ -197,7 +189,7 @@ public class SimpleGrid extends HBox {
 						String[] styles = cell.getStyle().split(";");
 						String borderColor = styles[3];
 						String newStyle = cell.getStyle().replaceAll(borderColor+";",
-										"-fx-border-color:transparent transparent transparent " + hex + ";");
+										"-fx-border-color:transparent transparent "+ hex + " "+ hex + ";");
 						cell.setStyle(newStyle);
 					} else {
 						String[] styles = cell.getStyle().split(";");
@@ -384,7 +376,7 @@ public class SimpleGrid extends HBox {
 			text = new Label("");
 			vb = new VBox(text);
 			vb.setAlignment(Pos.CENTER);
-			this.setVgrow(vb, Priority.ALWAYS);
+			VBox.setVgrow(vb, Priority.ALWAYS);
 			this.getChildren().add(vb);
 		}
 
