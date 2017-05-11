@@ -1,6 +1,6 @@
 #### Author: @ca.leumaleu
 
-# SimpleGrid V 1.0.0
+# SimpleGrid V 1.6.1
 1. [Overview](#overview)
 2. [SimpleGrid vs GridPane](#difference)
 3. [Architecture](#architecture)
@@ -48,7 +48,7 @@ SimpleGrid is a custom control used for purposes similar to those of GridPane bu
     <dependency>
     	<groupId>com.preag.simplegrid</groupId>
     	<artifactId>SimpleGrid</artifactId>
-    	<version>1.0.0-SNAPSHOT</version>
+    	<version>1.6.1-SNAPSHOT</version>
 	</dependency>
 ```
 
